@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Politics: Revolution to Today</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configure Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'french-blue': '#0055A4', // French flag blue
+                        'french-red': '#EF4135',   // French flag red
+                    },
+                    maxHeight: {
+                        '0': '0',
+                        'screen': '100vh',
+                        '1000': '1000px',
+                    }
+                },
+            },
+        };
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Base font and background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* Tailwind gray-50 */
+        }
+
+        /* Hide all page sections by default */
+        .page-section {
+            display: none;
+        }
+
+        /* Show the active page */
+        .page-section.active {
+            display: block;
+        }
+
+        /* Style for the active nav link */
+        .nav-link.active {
+            color: #EF4135;
+            /* french-red */
+            font-weight: 600;
+            border-bottom: 2px solid #EF4135;
+        }
+
+        /* Accordion transition */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content.active {
+            max-height: 1000px;
+            /* Set to a large value */
+            transition: max-height 0.5s ease-in;
+        }
+
+        /* Accordion icon rotation */
+        .accordion-button.active .icon-plus {
+            transform: rotate(45deg);
+        }
+
+        /* Timeline styles */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #0055A4;
+            /* french-blue */
+            border: 2px solid white;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-item:nth-child(odd) {
+                padding-right: 58%;
+                text-align: right;
+            }
+
+            .timeline-item:nth-child(even) {
+                padding-left: 58%;
+            }
+
+            .timeline-item:nth-child(odd)::before {
+                left: 50%;
+                margin-left: -8px;
+            }
+
+            .timeline-item:nth-child(even)::before {
+                left: 50%;
+                margin-left: -8px;
+            }
+        }
+
+        /* Chatbot styles */
+        .chat-message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            margin-bottom: 8px;
+        }
+
+        .user-message {
+            background-color: #0055A4;
+            /* french-blue */
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .bot-message {
+            background-color: #e5e7eb;
+            /* gray-200 */
+            color: #1f2937;
+            /* gray-800 */
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.typing {
+            background-color: #e5e7eb;
+            color: #4b5563;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Title -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl md:text-2xl font-bold text-french-blue">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block -mt-1" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L11 10.586V6z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        French Politics Explained
+                    </h1>
+                </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <button class="nav-link active" data-page="home">Home</button>
+                    <button class="nav-link" data-page="history">History</button>
+                    <button class="nav-link" data-page="system">How it Works</button>
+                    <button class="nav-link" data-page="parties">Parties</button>
+                    <button class="nav-link" data-page="today">France Today</button>
+                    <button class="nav-link" data-page="chat">Chat</button>
+                </nav>
+                <!-- Mobile Menu Button (Optional, for simplicity we use bottom nav) -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8 py-8 pb-24 md:pb-8">
+
+        <!-- ===== HOME PAGE ===== -->
+        <section id="page-home" class="page-section active">
+            <!-- Hero Section -->
+            <div
+                class="relative bg-french-blue text-white p-8 md:p-12 rounded-xl shadow-lg overflow-hidden text-center mb-10">
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">French Politics: From Revolution to Today</h2>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto">
+                        A guide to one of the world's most dynamic systems. Understand the history, the players, and the
+                        current crisis.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Introduction Text -->
+            <div class="bg-white p-6 rounded-lg shadow-md mb-10">
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Welcome!</h3>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    France's political system is a story filled with revolutions, five different republics, and a unique
+                    "semi-presidential" system. This site is here to make sense of it all. Whether you're a student, a
+                    traveler, or just trying to understand the headlines, we'll break down the history, the system, and
+                    the key issues that define France.
+                </p>
+            </div>
+
+            <!-- Interactive Navigation Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- History Card -->
+                <div class="nav-card bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                    data-page="history">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-french-blue mb-3" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6.253v11.494m0 0a2 2 0 100 4 2 2 0 000-4zM12 6.253a2 2 0 110-4 2 2 0 010 4zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2">The Story of France</h3>
+                    <p class="text-gray-600">How did we get here? From 1789 to the Fifth Republic.</p>
+                </div>
+
+                <!-- System Card -->
+                <div class="nav-card bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                    data-page="system">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-french-blue mb-3" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2">How France Works</h3>
+                    <p class="text-gray-600">President vs. Prime Minister: Who's really in charge?</p>
+                </div>
+
+                <!-- Parties Card -->
+                <div class="nav-card bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                    data-page="parties">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-french-blue mb-3" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17 20h5v-2a3 3 0 00-5.356-2.377M12 6H9m3 0a3 3 0 10-3 3m3-3a3 3 0 11-3 3m3-3v12m-6-6h-2m14-2H5a2 2 0 00-2 2v2a2 2 0 002 2h14a2 2 0 002-2v-2a2 2 0 00-2-2z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2">Who's Who</h3>
+                    <p class="text-gray-600">A look at the major political parties and players.</p>
+                </div>
+
+                <!-- Today Card -->
+                <div class="nav-card bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                    data-page="today">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-french-red mb-3" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3h.01M17 17h.01" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2">France Today</h3>
+                    <p class="text-gray-600">The 2024-2025 political crisis and what's next.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HISTORY PAGE ===== -->
+        <section id="page-history" class="page-section">
+            <h2 class="text-4xl font-bold text-center mb-10">The Story of France: Forging a Nation</h2>
+            <p class="text-xl text-center text-gray-700 max-w-3xl mx-auto mb-12">
+                French history is a cycle of crisis and reinvention. From absolute monarchy to the chaotic 19th century,
+                this timeline shows the path to the stable Fifth Republic of today.
+            </p>
+
+            <!-- Interactive Timeline -->
+            <div class="relative max-w-3xl mx-auto">
+                <!-- Center line -->
+                <div class="absolute left-1/2 -ml-0.5 w-1 h-full bg-gray-300 hidden md:block"
+                    style="transform: translateX(-50%);"></div>
+
+                <div class="space-y-12 md:space-y-0">
+                    <!-- Item 1: 1789 Revolution -->
+                    <div class="relative timeline-item">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-french-blue md:border-none">
+                            <span class="font-bold text-french-blue text-lg">1789: The French Revolution</span>
+                            <h3 class="text-2xl font-bold my-2">The "Start"</h3>
+                            <p class="text-gray-700">The Storming of the Bastille and the Declaration of the Rights of
+                                Man invent "Left" vs. "Right" politics, ending the absolute monarchy. This kicks off a
+                                century of instability.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: 19th Century -->
+                    <div class="relative timeline-item">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 md:border-none">
+                            <span class="font-bold text-gray-600 text-lg">1800s: A Century of Instability</span>
+                            <h3 class="text-2xl font-bold my-2">Monarchy, Empire, Republic</h3>
+                            <p class="text-gray-700">France cycles through Napoleon's First Empire, a restored Monarchy,
+                                the 1848 Revolution (Second Republic), and Napoleon III's Second Empire. Chaos is the
+                                norm.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: 1870 Third Republic -->
+                    <div class="relative timeline-item">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-french-blue md:border-none">
+                            <span class="font-bold text-french-blue text-lg">1870: The Third Republic</span>
+                            <h3 class="text-2xl font-bold my-2">First Stable Republic</h3>
+                            <p class="text-gray-700">After defeat by Prussia, France creates its first long-lasting
+                                republic. It's parliamentary, unstable, but survives until it is destroyed by the Nazi
+                                invasion in 1940.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: 1946 Fourth Republic -->
+                    <div class="relative timeline-item">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 md:border-none">
+                            <span class="font-bold text-gray-600 text-lg">1946: The Fourth Republic</span>
+                            <h3 class="text-2xl font-bold my-2">Post-War Instability</h3>
+                            <p class="text-gray-700">After WWII, France tries again. But with a weak president and 21
+                                governments in 12 years, the system is paralyzed. It finally collapses under the strain
+                                of the Algerian War.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: 1958 Fifth Republic -->
+                    <div class="relative timeline-item">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-french-red md:border-none">
+                            <span class="font-bold text-french-red text-lg">1958: The Fifth Republic (Today)</span>
+                            <h3 class="text-2xl font-bold my-2">The System We Have Now</h3>
+                            <p class="text-gray-700">Charles de Gaulle returns and creates a new constitution with a
+                                powerful, directly-elected President to end the chaos. This is the "semi-presidential"
+                                system that defines France today.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SYSTEM PAGE ===== -->
+        <section id="page-system" class="page-section">
+            <h2 class="text-4xl font-bold text-center mb-10">How the French Government Works</h2>
+            <p class="text-xl text-center text-gray-700 max-w-3xl mx-auto mb-12">
+                France has a unique "semi-presidential" system, a hybrid that gives it both a powerful President and a
+                Prime Minister who runs the government. Here's who's in charge.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <!-- The President -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400/0055A4/ffffff?text=Palais+de+l'Élysée" alt="Élysée Palace" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-3xl font-bold text-french-blue mb-3">The President</h3>
+                    <p class="text-lg font-semibold mb-2">The Head of State</p>
+                    <p class="text-gray-700 mb-4">The most powerful figure in France, elected every 5 years. The
+                        President lives at the Élysée Palace.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Controls foreign policy and defense.</li>
+                        <li>Appoints the Prime Minister.</li>
+                        <li>Can dissolve the National Assembly (call a snap election).</li>
+                        <li>Chairs the Council of Ministers.</li>
+                    </ul>
+                </div>
+
+                <!-- The Prime Minister -->
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <img src="https://placehold.co/600x400/333333/ffffff?text=Hôtel+de+Matignon" alt="Hôtel de Matignon" class="rounded-lg mb-4 w-full h-48 object-cover">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-3">The Prime Minister</h3>
+                    <p class="text-lg font-semibold mb-2">The Head of Government</p>
+                    <p class="text-gray-700 mb-4">Manages the government's day-to-day business and domestic policy. The
+                        Prime Minister's office is at the Hôtel de Matignon.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Leads the government (the cabinet).</li>
+                        <li>Implements the laws passed by Parliament.</li>
+                        <li>Is responsible *to* the Parliament, not the President.</li>
+                        <li>Can be fired by Parliament (a "motion of no confidence").</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cohabitation Box -->
+            <div class="bg-blue-50 border-l-4 border-french-blue p-6 rounded-lg shadow-md mb-8">
+                <h4 class="text-2xl font-bold text-french-blue mb-2">Key Concept: "Cohabitation"</h4>
+                <p class="text-lg text-gray-800">This is the crucial (and currently non-existent) scenario where the
+                    President is from one party and the Prime Minister (who controls Parliament) is from a rival party.
+                    The President's power is dramatically reduced, as they must "co-habit" with a hostile government.
+                </p>
+            </div>
+
+            <!-- Parliament Section -->
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-3xl font-bold text-center text-gray-900 mb-6">The Parliament</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-2xl font-bold mb-2">The National Assembly</h4>
+                        <p class="text-gray-700">The lower, but most powerful, house. Its 577 deputies are directly
+                            elected. It has the final say on laws and is the only body that can fire the Prime Minister.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold mb-2">The Senate</h4>
+                        <p class="text-gray-700">The upper house. Its 348 senators are indirectly elected by local
+                            officials. It's generally more conservative and acts as a check on the Assembly, but can be
+                            overruled.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PARTIES PAGE ===== -->
+        <section id="page-parties" class="page-section">
+            <h2 class="text-4xl font-bold text-center mb-10">Who's Who: The Political Blocs</h2>
+            <p class="text-xl text-center text-gray-700 max-w-3xl mx-auto mb-12">
+                The old two-party system is gone. French politics is now defined by three major blocs, each competing
+                for power in a deeply divided landscape.
+            </p>
+
+            <!-- Accordion Container -->
+            <div class="space-y-4 max-w-3xl mx-auto">
+
+                <!-- Party 1: Ensemble -->
+                <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                    <button class="accordion-button w-full flex justify-between items-center p-5 text-left">
+                        <span class="text-2xl font-bold text-yellow-600">Ensemble (Together)</span>
+                        <svg class="icon-plus h-6 w-6 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-5 pt-0 text-gray-700">
+                            <p class="text-lg mb-3"><strong>Ideology:</strong> The "Radical Center." Pro-European,
+                                economically liberal, and socially centrist.</p>
+                            <p class="text-lg mb-3"><strong>Key Figure:</strong> President Emmanuel Macron. His party is
+                                **Renaissance**.</p>
+                            <p class="text-lg"><strong>Current Status:</strong> Severely weakened. After the 2024 snap
+                                election, Macron's coalition lost its majority and is now a minority bloc in Parliament,
+                                struggling to pass laws.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Party 2: National Rally (RN) -->
+                <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                    <button class="accordion-button w-full flex justify-between items-center p-5 text-left">
+                        <span class="text-2xl font-bold text-french-blue">National Rally (RN)</span>
+                        <svg class="icon-plus h-6 w-6 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-5 pt-0 text-gray-700">
+                            <p class="text-lg mb-3"><strong>Ideology:</strong> Far-Right. Nationalist, "France-first,"
+                                anti-immigration, and Eurosceptic (though no longer pushing to leave the EU).</p>
+                            <p class="text-lg mb-3"><strong>Key Figures:</strong> **Jordan Bardella** (Party President)
+                                and **Marine Le Pen** (Parliamentary Leader).</p>
+                            <p class="text-lg"><strong>Current Status:</strong> A dominant force. The RN is polling as
+                                the most popular party in France and made huge gains in 2024. Bardella is a leading
+                                contender for the 2027 presidential election.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Party 3: New Popular Front (NFP) -->
+                <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                    <button class="accordion-button w-full flex justify-between items-center p-5 text-left">
+                        <span class="text-2xl font-bold text-french-red">New Popular Front (NFP)</span>
+                        <svg class="icon-plus h-6 w-6 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-5 pt-0 text-gray-700">
+                            <p class="text-lg mb-3"><strong>Ideology:</strong> A broad Left-Wing alliance. Pledges to
+                                lower the retirement age, raise the minimum wage, and fund massive green investment.</p>
+                            <p class="text-lg mb-3"><strong>Key Parties:</strong> **La France Insoumise** (Hard-Left),
+                                the **Socialist Party** (Center-Left), and the **Greens**.</p>
+                            <p class="text-lg"><strong>Current Status:</strong> As an alliance, they won the most seats
+                                in the 2024 election. However, the bloc is extremely fragile and deeply divided on many
+                                issues, making it difficult to act as a unified force.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Party 4: The Republicans (LR) -->
+                <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                    <button class="accordion-button w-full flex justify-between items-center p-5 text-left">
+                        <span class="text-2xl font-bold text-blue-700">The Republicans (LR)</span>
+                        <svg class="icon-plus h-6 w-6 text-gray-500 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-5 pt-0 text-gray-700">
+                            <p class="text-lg mb-3"><strong>Ideology:</strong> Traditional Center-Right. Conservative,
+                                Gaullist, and pro-business.</p>
+                            <p class="text-lg mb-3"><strong>Key Figures:</strong> The party lacks a single, powerful
+                                leader, which is part of its problem.</p>
+                            <p class="text-lg"><strong>Current Status:</strong> A shadow of its former self. The party
+                                is deeply split and has been "squeezed" by Macron and the RN. Its small bloc of MPs,
+                                however, are often "kingmakers" in the hung parliament.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== TODAY PAGE ===== -->
+        <section id="page-today" class="page-section">
+            <h2 class="text-4xl font-bold text-center text-french-red mb-10">France Today: The 2024-2025 Political
+                Crisis</h2>
+
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                    To understand French politics "now," you only need to know one thing: France is in a period of
+                    intense political instability following President Macron's **2024 snap legislative election.**
+                </p>
+
+                <h3 class="text-2xl font-bold mb-4">What Happened?</h3>
+                <ul class="list-none space-y-4 mb-8">
+                    <li class="flex items-start">
+                        <span class="text-french-red text-2xl font-bold mr-3">1.</span>
+                        <p class="text-gray-700"><strong class="text-gray-900">The Shock Dissolution:</strong> In June
+                            2024, Macron's party was crushed by the National Rally (RN) in European elections. He
+                            responded with a shocking gamble: he dissolved the National Assembly and called a new
+                            election.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-french-red text-2xl font-bold mr-3">2.</span>
+                        <p class="text-gray-700"><strong class="text-gray-900">The Gamble Fails:</strong> The election
+                            was a disaster for Macron. His *Ensemble* coalition lost seats. The *New Popular Front*
+                            (Left) and the *National Rally* (Far-Right) both made huge gains.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-french-red text-2xl font-bold mr-3">3.</span>
+                        <p class="text-gray-700"><strong class="text-gray-900">A Hung Parliament:</strong> The result is
+                            a parliament split three ways, with no bloc able to form a majority. This has led to
+                            political gridlock.</p>_
+                    </li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mb-4">What Are the Consequences?</h3>
+                <p class="text-gray-700 text-lg mb-6">This has created a paralyzed government and a "lame duck"
+                    president.</p>
+
+                <!-- Status Box -->
+                <div class="bg-red-50 border-l-4 border-french-red p-6 rounded-lg shadow-inner mb-6">
+                    <h4 class="text-xl font-bold text-french-red mb-2">Current Status: Government Paralysis</h4>
+                    <p class="text-lg text-gray-800">
+                        Without a majority, the government cannot pass laws, including the national budget. The NFP and
+                        RN can join forces to vote down any proposal.
+                    </p>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-french-blue p-6 rounded-lg shadow-inner">
+                    <h4 class="text-xl font-bold text-french-blue mb-2">The Revolving Door of Prime Ministers</h4>
+                    <p class="text-lg text-gray-800">
+                        Macron has been unable to find a Prime Minister who can survive.
+                        <br><br>
+                        After **Gabriel Attal** resigned, **Michel Barnier** was appointed, only to be the first PM fired by a motion of no confidence since 1962. After another brief government, the current Prime Minister is **Sébastien Lecornu**, who also leads a fragile minority government that could fall at any time.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ===== GEMINI AI FEATURE SECTION ===== -->
+            <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg mt-12 border-t-4 border-french-blue">
+                <div class="flex items-center mb-4">
+                    <span class="text-3xl mr-3">✨</span>
+                    <h3 class="text-2xl font-bold text-gray-900">What's Next? AI Analysis</h3>
+                </div>
+                <p class="text-lg text-gray-700 mb-6">
+                    The current gridlock is complex. Use the Gemini API to analyze the situation and generate potential
+                    future scenarios based on the facts.
+                </p>
+
+                <!-- Button to trigger analysis -->
+                <button id="gemini-analyze-btn" class="w-full text-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-gradient-to-r from-french-blue to-blue-700 hover:from-blue-700 hover:to-french-blue transition duration-300 transform hover:scale-105">
+                    Analyze Possible Outcomes
+                </button>
+
+                <!-- Loading Spinner -->
+                <div id="gemini-loading" class="hidden my-6 text-center">
+                    <svg class="animate-spin h-8 w-8 text-french-blue mx-auto" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                    <p class="text-lg text-gray-600 mt-2">Analyzing the political situation...</p>
+                </div>
+
+                <!-- Result Container -->
+                <div id="gemini-result-container" class="hidden mt-6 bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <!-- Content will be injected here -->
+                    <div id="gemini-result-text" class="prose prose-lg max-w-none text-gray-800"></div>
+                    <button id="gemini-clear-btn" class="mt-6 w-full text-center px-4 py-2 border border-gray-300 rounded-lg text-md font-medium text-gray-700 bg-white hover:bg-gray-100 transition duration-300">
+                        Clear Analysis
+                    </button>
+                </div>
+            </div>
+            <!-- ===== END GEMINI AI FEATURE SECTION ===== -->
+
+        </section>
+
+        <!-- ===== CHATBOT PAGE ===== -->
+        <section id="page-chat" class="page-section">
+            <h2 class="text-4xl font-bold text-center mb-10">Chat with an AI Expert</h2>
+            <p class="text-xl text-center text-gray-700 max-w-3xl mx-auto mb-12">
+                Ask me anything about French politics, from the Revolution to the current crisis.
+            </p>
+
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg border border-gray-200">
+                <!-- Chat Window -->
+                <div id="chat-window" class="h-96 p-6 overflow-y-auto flex flex-col space-y-2">
+                    <!-- Initial Bot Message -->
+                    <div class="chat-message bot-message">
+                        Bonjour! I am an AI assistant specializing in French politics. How can I help you today?
+                    </div>
+                    <!-- Messages will be added here -->
+                </div>
+
+                <!-- Chat Input Area -->
+                <div class="p-4 border-t border-gray-200 bg-gray-50 rounded-b-xl">
+                    <div class="flex items-center space-x-3">
+                        <input type="text" id="chat-input" class="flex-1 w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-french-blue" placeholder="Ask about the Fifth Republic...">
+                        <button id="chat-send-btn" class="px-6 py-3 rounded-lg text-white bg-french-blue hover:bg-blue-700 transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                            </svg>
+                        </button>
+                    </div>
+                    <button id="chat-clear-btn" class="text-xs text-gray-500 hover:text-french-red mt-2">
+                        Clear Chat History
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around z-50">
+        <button class="nav-link-mobile flex flex-col items-center text-gray-600 p-2" data-page="home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6-4a1 1 0 001-1v-1a1 1 0 10-2 0v1a1 1 0 001 1z" />
+            </svg>
+            <span class="text-xs">Home</span>
+        </button>
+        <button class="nav-link-mobile flex flex-col items-center text-gray-600 p-2" data-page="history">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-xs">History</span>
+        </button>
+        <button class="nav-link-mobile flex flex-col items-center text-gray-600 p-2" data-page="system">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-xs">System</span>
+        </button>
+        <button class="nav-link-mobile flex flex-col items-center text-gray-600 p-2" data-page="parties">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-2.377M12 6H9m3 0a3 3 0 10-3 3m3-3a3 3 0 11-3 3m3-3v12m-6-6h-2m14-2H5a2 2 0 00-2 2v2a2 2 0 002 2h14a2 2 0 002-2v-2a2 2 0 00-2-2z" />
+            </svg>
+            <span class="text-xs">Parties</span>
+        </button>
+        <button class="nav-link-mobile flex flex-col items-center text-gray-600 p-2" data-page="today">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3h.01M17 17h.01"></path></svg>
+            <span class="text-xs">Today</span>
+        </button>
+        <button class="nav-link-mobile flex flex-col items-center text-gray-600 p-2" data-page="chat">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <span class="text-xs">Chat</span>
+        </button>
+    </nav>
+
+    <!-- Add padding to bottom of main content to avoid overlap with mobile nav -->
+    <!-- This div is no longer needed as padding is added to <main> -->
+    <!-- <div class="h-20 md:hidden"></div> -->
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- SPA Navigation System ---
+            const pageSections = document.querySelectorAll('.page-section');
+            const navLinksDesktop = document.querySelectorAll('.nav-link');
+            const navLinksMobile = document.querySelectorAll('.nav-link-mobile');
+            const navCards = document.querySelectorAll('.nav-card');
+            
+            const allNavLinks = [...navLinksDesktop, ...navLinksMobile];
+
+            function showPage(pageId) {
+                // Hide all sections
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the target section
+                const targetPage = document.getElementById(`page-${pageId}`);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+                
+                // Update active state for nav links
+                allNavLinks.forEach(link => {
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+
+            // Add listeners to all navigation buttons (desktop, mobile, and home cards)
+            [...allNavLinks, ...navCards].forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const pageId = e.currentTarget.dataset.page;
+                    showPage(pageId);
+                });
+            });
+
+            // --- Accordion System ---
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    
+                    // Toggle active class on button and content
+                    button.classList.toggle('active');
+                    content.classList.toggle('active');
+                });
+            });
+
+            // Set the initial active state for the mobile nav
+            // (The desktop one is set in the HTML)
+            const mobileHomeLink = document.querySelector('.nav-link-mobile[data-page="home"]');
+            if (mobileHomeLink) {
+                mobileHomeLink.classList.add('active');
+            }
+
+
+            // --- Gemini API Feature Logic ---
+            const analyzeBtn = document.getElementById('gemini-analyze-btn');
+            const loadingEl = document.getElementById('gemini-loading');
+            const resultContainer = document.getElementById('gemini-result-container');
+            const resultTextEl = document.getElementById('gemini-result-text');
+            const clearBtn = document.getElementById('gemini-clear-btn');
+
+            if (analyzeBtn) {
+                analyzeBtn.addEventListener('click', handleGeminiAnalysis);
+            }
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', () => {
+                    resultContainer.classList.add('hidden');
+                    resultTextEl.innerHTML = '';
+                    analyzeBtn.classList.remove('hidden');
+                });
+            }
+
+            // --- Chatbot Logic ---
+            const chatWindow = document.getElementById('chat-window');
+            const chatInput = document.getElementById('chat-input');
+            const chatSendBtn = document.getElementById('chat-send-btn');
+            const chatClearBtn = document.getElementById('chat-clear-btn');
+            let chatHistory = []; // Stores the conversation
+
+            // System prompt for the chatbot
+            const chatSystemPrompt = "You are a helpful and neutral AI expert on French politics. Your goal is to answer user questions clearly and concisely. You are built into a website that already provides context on history, so you can focus on answering direct questions. Keep your answers factual and avoid personal opinions.";
+
+            if (chatSendBtn) {
+                chatSendBtn.addEventListener('click', handleChatSend);
+            }
+
+            if (chatInput) {
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleChatSend();
+                    }
+                });
+            }
+
+            if (chatClearBtn) {
+                chatClearBtn.addEventListener('click', () => {
+                    chatHistory = [];
+                    chatWindow.innerHTML = '<div class="chat-message bot-message">Bonjour! I am an AI assistant specializing in French politics. How can I help you today?</div>';
+                    chatInput.value = '';
+                });
+            }
+        });
+
+        /**
+         * Fetches data from the Gemini API with exponential backoff.
+         */
+        async function fetchWithBackoff(apiUrl, options, retries = 5, delay = 1000) {
+            try {
+                const response = await fetch(apiUrl, options);
+                if (!response.ok) {
+                    // Not a 429, so don't retry, just throw
+                    if (response.status !== 429) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    // It's a 429, so throw to trigger retry
+                    throw new Error('Rate limit exceeded');
+                }
+                return response.json();
+            } catch (error) {
+                if (retries > 0 && error.message.includes('Rate limit')) {
+                    // Don't log to console, just wait and retry
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithBackoff(apiUrl, options, retries - 1, delay * 2);
+                } else {
+                    // Re-throw the last error
+                    throw error;
+                }
+            }
+        }
+
+        /**
+         * Handles the Gemini API call to analyze political outcomes.
+         */
+        async function handleGeminiAnalysis() {
+            const analyzeBtn = document.getElementById('gemini-analyze-btn');
+            const loadingEl = document.getElementById('gemini-loading');
+            const resultContainer = document.getElementById('gemini-result-container');
+            const resultTextEl = document.getElementById('gemini-result-text');
+
+            // Show loading, hide button
+            analyzeBtn.classList.add('hidden');
+            loadingEl.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            resultTextEl.innerHTML = '';
+
+            // --- Gemini API Call ---
+            const apiKey = ""; // Leave as-is, will be handled by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const systemPrompt = "You are a world-class political scientist and expert on modern French politics. You provide clear, neutral, and insightful analysis in bullet points.";
+            const userQuery = "Given the 2024-2025 French political crisis, where the government is in a hung parliament split between three blocs (Macron's Ensemble, the left-wing NFP, and the far-right RN) and has no majority, please analyze three distinct potential future scenarios or outcomes that could resolve this gridlock. Keep the explanations concise, professional, and easy to understand.";
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            const fetchOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            };
+
+            try {
+                const result = await fetchWithBackoff(apiUrl, fetchOptions);
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    let text = candidate.content.parts[0].text;
+                    
+                    // Format the text from markdown-like to HTML
+                    const formattedText = text
+                        .split('\n') // Split by newlines
+                        .filter(line => line.trim() !== '') // Remove empty lines
+                        .map(line => {
+                            // Convert **bold** to <strong>
+                            line = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                            // Convert *italic* to <em>
+                            line = line.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                            // Handle list items
+                            if (line.trim().startsWith('* ') || line.trim().startsWith('- ')) {
+                                return `<li class="mb-2 ml-4">${line.substring(2).trim()}</li>`;
+                            }
+                            // Handle numbered list items
+                            if (line.match(/^\d+\.\s/)) {
+                                return `<li class="mb-2 ml-4">${line.substring(line.indexOf('.') + 1).trim()}</li>`;
+                            }
+                            // Wrap other lines in <p>
+                            return `<p class="mb-3">${line}</p>`;
+                        })
+                        .join('')
+                        .replace(/<li/g, '<ul><li') // Poor man's list wrapper
+                        .replace(/<\/li>(?!<li)/g, '</li></ul>');
+
+                    resultTextEl.innerHTML = formattedText;
+                } else {
+                    throw new Error("No valid content received from API.");
+                }
+
+            } catch (error) {
+                console.error("Error fetching Gemini analysis:", error);
+                resultTextEl.innerHTML = '<p class="text-red-600 font-semibold">Error: Could not retrieve analysis. The API may be unavailable or an error occurred. Please try again later.</p>';
+            } finally {
+                // Hide loading, show result
+                loadingEl.classList.add('hidden');
+                resultContainer.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Formats raw text from the bot into safe HTML.
+         */
+        function formatBotMessage(text) {
+            // Basic markdown to HTML conversion
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                .replace(/\*(.*?)\*/g, '<em>$1</em>') // Italics
+                .replace(/\n\s*-\s(.*?)/g, '<ul><li>$1</li></ul>') // Bullets
+                .replace(/<\/ul>\s*<ul>/g, '') // Join adjacent lists
+                .replace(/\n(\d+)\.\s(.*?)/g, '<ol><li>$2</li></ol>') // Numbered lists
+                .replace(/<\/ol>\s*<ol>/g, '') // Join adjacent lists
+                .replace(/\n/g, '<br>'); // Newlines
+        }
+
+        /**
+         * Adds a message to the chat window.
+         */
+        function addMessageToChat(message, type) {
+            const chatWindow = document.getElementById('chat-window');
+            const messageEl = document.createElement('div');
+            messageEl.classList.add('chat-message', type);
+            messageEl.innerHTML = message; // Use innerHTML for formatted messages
+            
+            if (type === 'typing') {
+                messageEl.id = 'typing-indicator';
+            }
+            
+            chatWindow.appendChild(messageEl);
+            chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll
+        }
+
+        /**
+         * Handles sending a chat message to the Gemini API.
+         */
+        async function handleChatSend() {
+            const chatInput = document.getElementById('chat-input');
+            const userQuery = chatInput.value.trim();
+
+            if (!userQuery) return; // Don't send empty messages
+
+            // 1. Display user message
+            addMessageToChat(userQuery.replace(/</g, "&lt;").replace(/>/g, "&gt;"), 'user-message'); // Sanitize user input
+            chatInput.value = '';
+
+            // 2. Add user message to history
+            const chatHistory = (typeof window.chatHistory !== 'undefined') ? window.chatHistory : [];
+            chatHistory.push({ role: "user", parts: [{ text: userQuery }] });
+            window.chatHistory = chatHistory; // Store it back
+
+            // 3. Show "typing" indicator
+            addMessageToChat('Bot is typing...', 'chat-message', 'typing');
+
+            // 4. Call Gemini API
+            const apiKey = ""; // Leave as-is
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const chatSystemPrompt = (typeof window.chatSystemPrompt !== 'undefined') ? window.chatSystemPrompt : "You are a helpful and neutral AI expert on French politics. Your goal is to answer user questions clearly and concisely. You are built into a website that already provides context on history, so you can focus on answering direct questions. Keep your answers factual and avoid personal opinions.";
+
+            const payload = {
+                contents: chatHistory,
+                systemInstruction: {
+                    parts: [{ text: chatSystemPrompt }]
+                },
+            };
+
+            const fetchOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            };
+
+            try {
+                const result = await fetchWithBackoff(apiUrl, fetchOptions);
+                const candidate = result.candidates?.[0];
+
+                // 5. Remove "typing" indicator
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const botResponse = candidate.content.parts[0].text;
+                    
+                    // 6. Add bot response to history
+                    chatHistory.push(candidate.content); // Add the full response object
+                    window.chatHistory = chatHistory;
+
+                    // 7. Display bot response
+                    addMessageToChat(formatBotMessage(botResponse), 'bot-message');
+                } else {
+                    throw new Error("No valid content received from API.");
+                }
+
+            } catch (error) {
+                console.error("Error in chat:", error);
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+                addMessageToChat('Sorry, I ran into an error. Please try again.', 'bot-message');
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
