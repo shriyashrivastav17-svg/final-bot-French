@@ -838,7 +838,7 @@
             resultTextEl.innerHTML = '';
 
             // --- Gemini API Call ---
-            const apiKey = "AIzaSyBwuoxJrmmI6AumWSGIou0YPDg6_r2gxtI"; // Leave as-is, will be handled by the environment
+            const apiKey = "AIzaSyAwdso9HH7pC26cYPVJPmF7vrVlsmwQl9Q"; // Leave as-is, will be handled by the environment
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
             const systemPrompt = "You are a world-class political scientist and expert on modern French politics. You provide clear, neutral, and insightful analysis in bullet points.";
@@ -957,7 +957,7 @@
             addMessageToChat('Bot is typing...', 'chat-message', 'typing');
 
             // 4. Call Gemini API
-            const apiKey = "AIzaSyBwuoxJrmmI6AumWSGIou0YPDg6_r2gxtI"; // Leave as-is
+            const apiKey = "AIzaSyAwdso9HH7pC26cYPVJPmF7vrVlsmwQl9Q"; // Leave as-is
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
             const chatSystemPrompt = (typeof window.chatSystemPrompt !== 'undefined') ? window.chatSystemPrompt : "You are a helpful and neutral AI expert on French politics. Your goal is to answer user questions clearly and concisely. You are built into a website that already provides context on history, so you can focus on answering direct questions. Keep your answers factual and avoid personal opinions.";
